@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 — ScrollBoost</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0f1115;
+    --surface: #171a21;
+    --card: #1c2029;
+    --border: #2a2f3a;
+    --text: #e6e9ef;
+    --muted: #9aa3b2;
+    --accent: #22d3ee;
+    --accent-ink: #06222a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { background: var(--bg); }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .policy-wrap {
+    width: min(calc(100% - 48px), 760px);
+    margin-inline: auto;
+    padding: 78px 0 64px;
+  }
+
+  .policy-header {
+    padding-bottom: 34px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(34px, 7vw, 48px);
+    font-weight: 800;
+    letter-spacing: -.05em;
+    line-height: 1.15;
+  }
+
+  .meta {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .summary-card {
+    position: relative;
+    margin-top: 30px;
+    padding: 24px 26px 24px 30px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card);
+  }
+
+  .summary-card::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--accent);
+    content: "";
+  }
+
+  .summary-card strong {
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .policy-content { margin-top: 40px; }
+
+  .policy-section {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 34px;
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .policy-section:last-child { border-bottom: 1px solid var(--border); }
+
+  h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 750;
+    letter-spacing: -.025em;
+    line-height: 1.5;
+  }
+
+  .policy-body p,
+  .policy-body li {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .policy-body p { margin: 0; }
+
+  .policy-body ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .policy-body li { margin: 0 0 10px; }
+  .policy-body li:last-child { margin-bottom: 0; }
+
+  code {
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .88em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .back-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    margin-top: 36px;
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 700;
+    text-underline-offset: 5px;
+  }
+
+  .back-link:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    .policy-wrap {
+      width: min(calc(100% - 32px), 760px);
+      padding: 46px 0 48px;
+    }
+
+    h1 { font-size: 34px; }
+
+    .summary-card {
+      padding: 21px 20px 21px 24px;
+      border-radius: 12px;
+    }
+
+    .summary-card strong { font-size: 16px; }
+
+    .policy-content { margin-top: 30px; }
+
+    .policy-section {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 25px 0;
+    }
+
+    .policy-body p,
+    .policy-body li { font-size: 15px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after { transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<main class="policy-wrap">
+  <header class="policy-header">
+    <h1>ScrollBoost 隐私政策</h1>
+    <p class="meta">生效日期：2026-10-03 · 版本：v1.0.0</p>
+    <div class="summary-card"><strong>一句话总结：ScrollBoost 不收集、不存储、不传输你的任何数据。</strong></div>
+  </header>
+
+  <div class="policy-content">
+    <section class="policy-section">
+      <h2>1. 我们收集什么</h2>
+      <div class="policy-body">
+        <p>什么都不收集。ScrollBoost 的全部功能（滚轮加速、设置保存、开机自启）都在你的电脑本地完成。</p>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>2. 明确不收集的内容</h2>
+      <div class="policy-body">
+        <ul>
+          <li>应用名称、窗口标题、浏览活动、滚动历史、按键/滚轮事件统计</li>
+          <li>设备标识符、IP 地址、位置、账号信息（本软件没有账号体系）</li>
+          <li>崩溃报告、使用分析、遥测数据</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>3. 网络行为</h2>
+      <div class="policy-body">
+        <p>ScrollBoost 不发起任何网络请求：无更新检查、无广告、无分析、无云同步。</p>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>4. 本地数据</h2>
+      <div class="policy-body">
+        <p>你的偏好设置只保存在本地文件 <code>%LocalAppData%\ScrollBoost\settings.json</code> 中，不会离开你的电脑。卸载时删除该文件即可彻底清除。</p>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>5. 联系我们</h2>
+      <div class="policy-body">
+        <p>如对本政策有任何疑问，请通过项目主页的联系方式与我们联系。</p>
+      </div>
+    </section>
+  </div>
+
+  <a class="back-link" href="index.html">← 返回首页</a>
+</main>
+</body>
+</html>
