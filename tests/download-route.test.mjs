@@ -56,16 +56,18 @@ test("points both visible download buttons at the same-origin route", async () =
 test("exposes crawlable pages and a sitemap", async () => {
   const [home, privacy, robots, sitemap] = await Promise.all([
     fetch(baseUrl),
-    fetch(new URL("/privacy.html", baseUrl)),
+    fetch(new URL("/privacy", baseUrl)),
     fetch(new URL("/robots.txt", baseUrl)),
     fetch(new URL("/sitemap.xml", baseUrl)),
   ]);
   assert.equal(home.status, 200);
   assert.match(await home.text(), /rel="canonical" href="https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/"/);
   assert.equal(privacy.status, 200);
-  assert.match(await privacy.text(), /rel="canonical" href="https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/privacy\.html"/);
+  assert.match(await privacy.text(), /rel="canonical" href="https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/privacy"/);
   assert.equal(robots.status, 200);
   assert.match(await robots.text(), /Sitemap: https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/sitemap\.xml/);
   assert.equal(sitemap.status, 200);
-  assert.match(await sitemap.text(), /<urlset[^>]*>/);
+  const sitemapXml = await sitemap.text();
+  assert.match(sitemapXml, /<urlset[^>]*>/);
+  assert.match(sitemapXml, /<loc>https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/privacy<\/loc>/);
 });
