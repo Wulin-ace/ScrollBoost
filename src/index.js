@@ -1,6 +1,6 @@
-const FILE_NAME = "ScrollBoost-v1.0.0-win-x64.zip";
+const FILE_NAME = "ScrollBoost-v1.0.1-win-x64.zip";
 const DOWNLOAD_PATH = `/download/${FILE_NAME}`;
-const RELEASE_URL = `https://github.com/Wulin-ace/ScrollBoost/releases/download/v1.0.0/${FILE_NAME}`;
+const RELEASE_URL = `https://github.com/Wulin-ace/ScrollBoost/releases/download/v1.0.1/${FILE_NAME}`;
 
 function redirectToRelease() {
   return Response.redirect(RELEASE_URL, 302);

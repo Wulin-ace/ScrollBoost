@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 const baseUrl = process.env.TEST_BASE_URL ?? "http://127.0.0.1:8787";
-const fileName = "ScrollBoost-v1.0.0-win-x64.zip";
+const fileName = "ScrollBoost-v1.0.1-win-x64.zip";
+const fileSize = "51485904";
 const downloadUrl = new URL(`/download/${fileName}`, baseUrl);
 
 test("exposes the public release as a downloadable file", async () => {
@@ -12,7 +13,7 @@ test("exposes the public release as a downloadable file", async () => {
   });
 
   assert.equal(response.status, 200);
-  assert.equal(response.headers.get("content-length"), "47319294");
+  assert.equal(response.headers.get("content-length"), fileSize);
   assert.equal(response.headers.get("content-type"), "application/octet-stream");
   assert.equal(response.headers.get("accept-ranges"), "bytes");
   assert.equal(
@@ -28,7 +29,7 @@ test("supports resuming an interrupted download with a byte range", async () => 
   });
 
   assert.equal(response.status, 206);
-  assert.equal(response.headers.get("content-range"), "bytes 0-15/47319294");
+  assert.equal(response.headers.get("content-range"), `bytes 0-15/${fileSize}`);
   assert.equal(response.headers.get("content-length"), "16");
   assert.equal((await response.arrayBuffer()).byteLength, 16);
 });
@@ -50,4 +51,21 @@ test("points both visible download buttons at the same-origin route", async () =
 
   assert.equal(response.status, 200);
   assert.equal(html.split(expectedHref).length - 1, 2);
+});
+
+test("exposes crawlable pages and a sitemap", async () => {
+  const [home, privacy, robots, sitemap] = await Promise.all([
+    fetch(baseUrl),
+    fetch(new URL("/privacy.html", baseUrl)),
+    fetch(new URL("/robots.txt", baseUrl)),
+    fetch(new URL("/sitemap.xml", baseUrl)),
+  ]);
+  assert.equal(home.status, 200);
+  assert.match(await home.text(), /rel="canonical" href="https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/"/);
+  assert.equal(privacy.status, 200);
+  assert.match(await privacy.text(), /rel="canonical" href="https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/privacy\.html"/);
+  assert.equal(robots.status, 200);
+  assert.match(await robots.text(), /Sitemap: https:\/\/scrollboost\.marketpulse-zixun\.workers\.dev\/sitemap\.xml/);
+  assert.equal(sitemap.status, 200);
+  assert.match(await sitemap.text(), /<urlset[^>]*>/);
 });

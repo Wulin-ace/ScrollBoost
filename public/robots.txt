@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scrollboost.marketpulse-zixun.workers.dev/sitemap.xml
